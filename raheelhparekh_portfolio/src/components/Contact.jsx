@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
-import { RiMoonClearLine, RiSunLine } from 'react-icons/ri';
+import emailjs from '@emailjs/browser';
 
 function Contact({ darkMode, setDarkMode }) {
   const [formData, setFormData] = useState({
