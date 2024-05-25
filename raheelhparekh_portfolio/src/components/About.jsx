@@ -8,18 +8,20 @@ import myImage from "../image/raheel.jpg"; // Replace with your image path
 // Define keyframes for zoom-in animation
 const zoomInAnimation = {
   hidden: { scale: 0.5, opacity: 0.1 },
-  visible: { scale: 1, opacity: 1, transition: { duration: 2 } },
+  visible: { scale: 1, opacity: 1, transition: { duration: 1.5 } },
 };
 
 function About({ darkMode }) {
   const controls = useAnimation();
-  const { ref: intersectionRef, inView } = useInView({ triggerOnce: true });
+  const { ref: intersectionRef, inView } = useInView({ triggerOnce: false });
   const [imgStyle, setImgStyle] = useState({ transform: 'translate(0px, 0px)' });
   const textRefs = useRef([]);
 
   useEffect(() => {
     if (inView) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
   }, [controls, inView]);
 
@@ -99,10 +101,10 @@ function About({ darkMode }) {
                   initial="hidden"
                   animate={controls}
                   variants={zoomInAnimation} // Apply zoom-in animation to text
-                  href="https://drive.google.com/drive/folders/1fHkCISfEEKPlyWJZzZwPx_HJBmJt0khh" // Replace with the actual path to your resume
+                  href="https://drive.google.com/drive/folders/1fHkCISfEEKPlyWJZzZwPx_HJBmJt0khh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-lg md:text-xl py-2 px-4 rounded-full flex items-center ${darkMode ? 'dark:bg-black dark:text-white hover:bg-white hover:dark:text-black' : 'bg-white text-black hover:bg-black hover:text-white'}`}
+                  className={`text-lg md:text-xl py-2 px-4 rounded-full flex items-center  ${darkMode ? 'dark:bg-black dark:text-white hover:bg-white hover:dark:text-black' : 'bg-white text-black hover:bg-black hover:text-white'}`}
                 >
                   Download My Resume
                   <BiLinkExternal className="ml-2" />

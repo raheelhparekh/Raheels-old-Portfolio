@@ -19,7 +19,7 @@ const socialLinks = [
     label: 'Resume'
   },
   {
-    href: 'https://www.instagram.com/raheelhp',
+    href: 'https://www.instagram.com/_raheelhp/',
     icon: <FaInstagram />,
     label: 'Instagram'
   },

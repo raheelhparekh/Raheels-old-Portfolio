@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import { Element } from 'react-scroll';
 import About from './components/About';
@@ -11,7 +11,16 @@ import Footer from './components/Footer';
 import './App.css';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true); // initially starts in dark mode
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check local storage for saved theme mode
+    const savedMode = localStorage.getItem('theme');
+    return savedMode === 'dark';
+  });
+
+  // Update local storage when theme mode changes
+  useEffect(() => {
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   return (
     <div className={darkMode ? 'dark' : ''}>

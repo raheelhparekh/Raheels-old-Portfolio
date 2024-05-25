@@ -94,8 +94,10 @@ const HomeProfile = ({ darkMode }) => {
                 src={myImage}
                 alt="My Profile"
                 className={`w-full h-auto md:max-h-96 md:w-auto border ${
-                  darkMode ? "border-white" : "border-black"
-                } rounded-md transition-transform transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer`}
+                  darkMode ? "border-white" : "border-black" 
+                } rounded-md transition-transform transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer${
+                  isVisible ? "animate-zoom-in" : ""
+                }`}
               />
             </Link>
           </div>
