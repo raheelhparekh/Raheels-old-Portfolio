@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import myImage from "../image/Photo_dark.jpeg"; // Replace with your image path
+import myImage from "../image/Photo10.jpeg"; // Replace with your image path
 import { Link } from "react-scroll";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import Typing from "react-typing-effect";
 
 const HomeProfile = ({ darkMode }) => {
   const [isAtBottom, setIsAtBottom] = useState(false);
-  const [navbarHeight, setNavbarHeight] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const textRef = useRef(null);
 
   useEffect(() => {
@@ -14,12 +14,14 @@ const HomeProfile = ({ darkMode }) => {
       const isBottom =
         window.innerHeight + window.scrollY >= document.body.offsetHeight;
       setIsAtBottom(isBottom);
-    };
 
-    const navbar = document.querySelector("header");
-    if (navbar) {
-      setNavbarHeight(navbar.offsetHeight);
-    }
+      const scrollTop = window.scrollY;
+      if (scrollTop > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
     window.addEventListener("scroll", handleScroll);
 
@@ -44,45 +46,34 @@ const HomeProfile = ({ darkMode }) => {
 
   useEffect(() => {
     const rootElement = document.documentElement;
-    const bodyElement = document.body; // Get the body element
+    const bodyElement = document.body;
 
     if (darkMode) {
       rootElement.classList.add("dark");
-      bodyElement.classList.add("dark"); // Add 'dark' class to body element
+      bodyElement.classList.add("dark");
     } else {
       rootElement.classList.remove("dark");
-      bodyElement.classList.remove("dark"); // Remove 'dark' class from body element
+      bodyElement.classList.remove("dark");
     }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.5 }
-    );
-
-    if (textRef.current) {
-      observer.observe(textRef.current);
-    }
-
-    return () => {
-      if (textRef.current) {
-        observer.unobserve(textRef.current);
-      }
-    };
   }, [darkMode]);
 
   return (
     <div
-      className={`min-h-screen flex items-center justify-center ${
+      className={`min-h-screen flex flex-col items-center justify-center p-16 ${
         darkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
-      style={{ paddingTop: navbarHeight }}
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <div
+        className="container mx-auto px-4 md:px-8 lg:px-12 xl:px-16"
+        style={{
+          opacity: isScrolled ? 1 : 0.8,
+          transform: isScrolled ? "scale(1)" : "scale(0.8)",
+          transition: "opacity 1.5s ease, transform 1.5s ease",
+        }}
+      >
         <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
           {/* Image */}
-          <div className="md:w-1/2 flex justify-center">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <Link
               to="about"
               spy={true}
@@ -93,36 +84,27 @@ const HomeProfile = ({ darkMode }) => {
               <img
                 src={myImage}
                 alt="My Profile"
-                className={`w-full h-auto md:max-h-96 md:w-auto border ${
-                  darkMode ? "border-white" : "border-black" 
-                } rounded-md transition-transform transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer${
-                  isVisible ? "animate-zoom-in" : ""
-                }`}
+                className={`max-w-full h-auto md:max-h-[50vh] lg:max-h-[60vh] xl:max-h-[60vh] border ${
+                  darkMode ? "border-white" : "border-black"
+                } rounded-md`}
               />
             </Link>
           </div>
           {/* Name and Details */}
-          <div className="md:w-1/2">
+          <div className="w-full md:w-1/2 text-center md:text-left space-y-8 md:space-y-6">
             <h1
               ref={textRef}
-              className={`text-4xl md:text-6xl font-montserrat font-semibold mb-4 ${
-                isVisible ? "animate-zoom-in" : ""
-              }`}
+              className="text-4xl md:text-6xl font-montserrat font-semibold mb-4"
             >
               Hi, I am Raheel Parekh
             </h1>
-            <p
-              className={`text-lg md:text-xl mb-4 ${
-                isVisible ? "animate-zoom-in" : ""
-              }`}
-            >
-              Software Engineer | Web Developer | Tech Enthusiast
-            </p>
-            <p
-              className={`text-lg md:text-xl mb-4 ${
-                isVisible ? "animate-zoom-in" : ""
-              }`}
-            >
+            <Typing
+              text={["Software Engineer", "Web Developer", "Tech Enthusiast"]}
+              speed={50}
+              eraseSpeed={50}
+              className="text-lg md:text-xl mb-4"
+            />
+            <p className="text-lg md:text-xl mb-4">
               I am passionate about learning, constantly improving my skills,
               and turning innovative dreams into reality. Welcome to my
               portfolio!
@@ -133,8 +115,11 @@ const HomeProfile = ({ darkMode }) => {
               smooth={true}
               duration={500}
               offset={-100} // Adjust offset to ensure the about page is fully visible
-              className={`text-lg md:text-xl py-2 px-4 rounded-full mt-4 inline-block cursor-pointer
-                ${darkMode ? 'dark:bg-black dark:text-white hover:bg-white hover:dark:text-black' : 'bg-white text-black hover:bg-black hover:text-white'}`}
+              className={`text-lg md:text-xl py-2 px-4 rounded-full mt-4 inline-block cursor-pointer ${
+                darkMode
+                  ? "dark:bg-black dark:text-white hover:bg-white hover:dark:text-black"
+                  : "bg-black text-white hover:bg-white hover:text-black"
+              }`}
             >
               Know me more
             </Link>

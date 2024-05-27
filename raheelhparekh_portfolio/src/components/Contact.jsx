@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 function Contact({ darkMode }) {
   const [formData, setFormData] = useState({
@@ -11,6 +11,22 @@ function Contact({ darkMode }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [emailError, setEmailError] = useState("");
   const formRef = useRef();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll(".zoom-in");
+      elements.forEach((element) => {
+        if (element.getBoundingClientRect().top < window.innerHeight) {
+          element.classList.add("animate");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,19 +69,22 @@ function Contact({ darkMode }) {
 
   const textColor = darkMode ? "text-white" : "text-black";
   const bgColor = darkMode ? "bg-black" : "bg-white";
-  const formInputColor = darkMode ? "text-white" : "text-white";
+  const formInputColor = darkMode ? "text-white" : "text-black";
+  const contactBoxBg = darkMode ? "bg-gray-800" : "bg-gray-200";
+  const buttonColor = darkMode ? "bg-blue-600 hover:bg-blue-700 focus:ring-blue-800" : "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300";
+  const labelColor = darkMode ? "text-gray-400" : "text-gray-500";
 
   return (
     <div className={darkMode ? "dark" : ""}>
-      <section className={`min-h-screen flex flex-col items-center justify-center ${bgColor} p-8`}>
-        <h1 className={`text-4xl mb-8 ${textColor}`}>Get in Touch</h1>
-        <div className={`bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-10 max-w-4xl w-full flex`}>
-          <div className="w-1/2 pr-8 p-8">
-            <h2 className={`text-2xl mb-4 ${formInputColor}`}>My Contact Information</h2>
-            <p className={`mb-2 ${formInputColor}`}>
+      <section className={`min-h-screen flex flex-col items-center justify-center ${bgColor} p-8 pt-16 pb-16`}>
+        <h1 className={`text-4xl mb-8 ${textColor} zoom-in`}>Get in Touch</h1>
+        <div className={`${contactBoxBg} rounded-lg shadow-lg p-10 max-w-4xl w-full flex flex-col md:flex-row zoom-in`}>
+          <div className="w-full md:w-1/2 md:pr-8 mb-8 md:mb-0">
+            <h2 className={`text-2xl mb-4 ${textColor}`}>My Contact Information</h2>
+            <p className={`mb-2 ${textColor}`}>
               Email: <a href="mailto:rhparekh2003@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">rhparekh2003@gmail.com</a>
             </p>
-            <p className={formInputColor}>
+            <p className={textColor}>
               WhatsApp: <a href="https://wa.me/8169013763" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">+91-8169013763</a>
             </p>
           </div>
@@ -73,11 +92,11 @@ function Contact({ darkMode }) {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="w-1/2"
+            className="w-full md:w-1/2"
           >
             {!isSubmitted ? (
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-                <div className="relative z-0 w-full mb-5 group ">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 zoom-in">
+                <div className="relative z-0 w-full mb-5 group">
                   <input
                     type="text"
                     name="name"
@@ -91,7 +110,7 @@ function Contact({ darkMode }) {
                   />
                   <label
                     htmlFor="name"
-                    className={`peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ${formInputColor}`}
+                    className={`peer-focus:font-medium absolute text-sm ${labelColor} duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}
                   >
                     Enter Your Name
                   </label>
@@ -110,7 +129,7 @@ function Contact({ darkMode }) {
                   />
                   <label
                     htmlFor="email"
-                    className={`peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ${formInputColor}`}
+                    className={`peer-focus:font-medium absolute text-sm ${labelColor} duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}
                   >
                     Enter Your Email
                   </label>
@@ -129,14 +148,14 @@ function Contact({ darkMode }) {
                   />
                   <label
                     htmlFor="message"
-                    className={`peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ${formInputColor}`}
+                    className={`peer-focus:font-medium absolute text-sm ${labelColor} duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}
                   >
                     Enter Your Message
                   </label>
                 </div>
                 <button
                   type="submit"
-                  className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ${darkMode ? 'dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' : 'bg-blue-700 hover:bg-blue-800 focus:ring-blue-300'}`}
+                  className={`text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ${buttonColor}`}
                 >
                   Submit
                 </button>

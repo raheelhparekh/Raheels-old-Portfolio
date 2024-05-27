@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Typing from 'react-typing-effect';
 
 function Experience({ darkMode }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,10 +40,14 @@ function Experience({ darkMode }) {
     }, 100);
   };
 
+  const textColor = darkMode ? 'text-white' : 'text-black';
+  const bgColor = darkMode ? 'bg-black' : 'bg-white';
+  const cardBgColor = darkMode ? 'bg-gray-800' : 'bg-gray-200';
+
   return (
     <section
       ref={sectionRef}
-      className={`p-8 h-auto md:h-screen flex flex-col items-center justify-center ${darkMode ? 'bg-black text-white' : 'bg-white text-black'} ${isScrolled ? 'scrolled' : ''}`}
+      className={`p-8 pt-16 pb-16 h-auto md:h-screen flex flex-col items-center justify-center ${bgColor} ${textColor} ${isScrolled ? 'scrolled' : ''}`}
       onClick={handleClick}
     >
       <motion.div
@@ -54,21 +59,23 @@ function Experience({ darkMode }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
           {/* First Experience */}
           <motion.div
-            className={`p-8 rounded-md shadow-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'}`}
-            whileHover={{ scale: 1.1 }}
+            className={`p-8 rounded-md shadow-md ${cardBgColor} ${textColor}`}
             whileTap={{ scale: 0.9 }}
           >
-            <h2 className="text-2xl mb-2">Web Developer</h2>
+            <h2 className="text-2xl mb-2">
+              <Typing text={['Web Developer']} speed={50} eraseDelay={2000} />
+            </h2>
             <p className="text-lg">SPESSA | 2023</p>
             <p className="text-lg mt-2">Built an expense tracker website for financial management with budget planning feature.</p>
           </motion.div>
           {/* Second Experience */}
           <motion.div
-            className={`p-8 rounded-md shadow-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'}`}
-            whileHover={{ scale: 1.1 }}
+            className={`p-8 rounded-md shadow-md ${cardBgColor} ${textColor}`}
             whileTap={{ scale: 0.9 }}
           >
-            <h2 className="text-2xl mb-2">Full Stack Web Developer</h2>
+            <h2 className="text-2xl mb-2">
+              <Typing text={['Full Stack Web Developer']} speed={50} eraseDelay={2000} />
+            </h2>
             <p className="text-lg">Luxury Lane | 2024</p>
             <p className="text-lg mt-2">Built an E-commerce website displaying various luxury products for selection.</p>
           </motion.div>
