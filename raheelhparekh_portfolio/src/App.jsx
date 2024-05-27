@@ -9,6 +9,7 @@ import SocialLinks from './components/SocialLinks';
 import HomeProfile from './components/HomeProfile';
 import Footer from './components/Footer';
 import './App.css';
+import { inject } from '@vercel/analytics';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -16,6 +17,10 @@ function App() {
     const savedMode = localStorage.getItem('theme');
     return savedMode === 'dark';
   });
+   // Initialize Vercel Analytics
+   useEffect(() => {
+    inject();
+  }, []);
 
   // Update local storage when theme mode changes
   useEffect(() => {
