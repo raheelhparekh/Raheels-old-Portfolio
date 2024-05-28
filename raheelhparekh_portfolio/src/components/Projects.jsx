@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub } from 'react-icons/fa';
-import projectImage1 from '../image/RP light 2.png';
-import projectImage2 from '../image/RP dark 2.png';
+import {FaYoutube } from 'react-icons/fa';
+import projectImage1 from '../image/luxury_lane.png';
+import projectImage2 from '../image/spessa.png';
 import projectImage3 from '../image/RP light.png';
 
 const projectsData = [
   {
-    title: "Project 1",
-    description: "Description of Project 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    tools: ["React", "Node.js", "MongoDB"],
-    githubLink: "https://github.com/username/project1",
-    image: projectImage1
-  },
-  {
-    title: "Project 2",
-    description: "Description of Project 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    title: "SPESSA",
+    description: "Expense tracker website for financial management with budget planning features, various financial Calculators with dynamic charts based on user input.",
     tools: ["HTML", "CSS", "JavaScript"],
-    githubLink: "https://github.com/username/project2",
+    githubLink: "https://youtu.be/PVavGsoddIU",
     image: projectImage2
   },
+  {
+    title: "Luxury Lane",
+    description: "E commerce website for luxury products shopping. Designed a user-friendly interface to showcase and track users' past purchases, providing valuable insights for decision-making.",
+    tools: ["React", "Node.js", "MongoDB", "Express"],
+    githubLink: "https://youtu.be/t3V6HliXTsk",
+    image: projectImage1
+  },
+ 
   {
     title: "Project 3",
     description: "Description of Project 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -82,7 +83,7 @@ function Projects({ darkMode }) {
                   ))}
                 </div>
                 <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className={`flex items-center hover:underline ${darkMode ? 'text-blue-300' : 'text-blue-500'}`}>
-                  <FaGithub className="mr-2" /> View on GitHub
+                  <FaYoutube className="mr-2" /> View Demo
                 </a>
               </div>
             </motion.div>
