@@ -17,7 +17,7 @@ const projectsData = [
     title: "Luxury Lane",
     description: "E commerce website for luxury products shopping. Designed a user-friendly interface to showcase and track users' past purchases, providing valuable insights for decision-making.",
     tools: ["React", "Node.js", "MongoDB", "Express"],
-    githubLink: "https://youtu.be/t3V6HliXTsk",
+    githubLink: "https://youtu.be/rnB2DHSVWzE",
     image: projectImage1
   },
  
