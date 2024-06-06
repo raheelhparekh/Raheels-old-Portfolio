@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {FaYoutube } from 'react-icons/fa';
 import projectImage1 from '../image/luxury_lane.png';
 import projectImage2 from '../image/spessa.png';
-import projectImage3 from '../image/RP light.png';
+import projectImage3 from '../image/raheel_ss_portfolio.png';
 
 const projectsData = [
   {
@@ -14,19 +14,18 @@ const projectsData = [
     image: projectImage2
   },
   {
+    title: "Portfolio Website",
+    description: "Built a personal portfolio website to showcase my projects and skills. The website is responsive and has a dark & light mode feature.",
+    tools: ["ReactJS", "TailwindCSS", "Email-JS"],
+    githubLink: "https://github.com/raheelhparekh/Raheel-s-Portfolio",
+    image: projectImage3
+  },
+  {
     title: "Luxury Lane",
     description: "E commerce website for luxury products shopping. Designed a user-friendly interface to showcase and track users' past purchases, providing valuable insights for decision-making.",
     tools: ["React", "Node.js", "MongoDB", "Express"],
     githubLink: "https://youtu.be/rnB2DHSVWzE",
     image: projectImage1
-  },
- 
-  {
-    title: "Project 3",
-    description: "Description of Project 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    tools: ["Python", "Django", "PostgreSQL"],
-    githubLink: "https://github.com/username/project3",
-    image: projectImage3
   }
 ];
 

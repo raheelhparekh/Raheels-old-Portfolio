@@ -44,7 +44,7 @@ function About({ darkMode }) {
             I'm from Mumbai, a final-year Computer Science student at KJ Somaiya College of Engineering, pursuing a B.Tech degree in Computer Science. Additionally, I am pursuing an Honours degree in Cybersecurity, which further fuels my curiosity and commitment to remaining at the forefront of technological innovation.
           </p>
           <p className={`text-lg mt-2 ${textColor}`}>
-            Driven by a relentless eagerness to learn and a knack for problem-solving, I aspire to leverage my skills to make a meaningful impact. With a blend of curiosity, technological passion, and analytical prowess, I am poised to contribute significantly to the ever-evolving tech world.
+            I also have a keen interest in finance. I am an active trader & investor in the stock market. I have been trading & investing for over 2 years now and have gained a lot of knowledge and experience in the field. 
           </p>
 
           <hr className="mt-10" />

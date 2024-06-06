@@ -84,9 +84,9 @@ function Contact({ darkMode }) {
             <p className={`mb-2 ${textColor}`}>
               Email: <a href="mailto:rhparekh2003@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">rhparekh2003@gmail.com</a>
             </p>
-            <p className={textColor}>
+            {/* <p className={textColor}>
               WhatsApp: <a href="https://wa.me/8169013763" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">+91-8169013763</a>
-            </p>
+            </p> */}
           </div>
           <motion.div
             initial={{ opacity: 0, y: -50 }}
