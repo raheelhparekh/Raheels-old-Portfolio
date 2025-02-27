@@ -4,6 +4,9 @@ import {FaYoutube } from 'react-icons/fa';
 import projectImage1 from '../image/luxury_lane.png';
 import projectImage2 from '../image/spessa.png';
 import projectImage3 from '../image/raheel_ss_portfolio.png';
+import projectImage4 from '../image/tippani.png';
+import projectImage5 from '../image/symphony_hub.png';
+import projectImage6 from '../image/bhool-bhulaiyaa.png';
 
 const projectsData = [
   {
@@ -23,10 +26,31 @@ const projectsData = [
   {
     title: "Luxury Lane",
     description: "E commerce website for luxury products shopping. Designed a user-friendly interface to showcase and track users' past purchases, providing valuable insights for decision-making.",
-    tools: ["React", "Node.js", "MongoDB", "Express"],
+    tools: ["React", "Node.js", "Javascript", "MongoDB", "Express"],
     githubLink: "https://youtu.be/rnB2DHSVWzE",
     image: projectImage1
-  }
+  },
+  {
+    title: "Tippani",
+    description: "A blogging app for users to share their thoughts, POV's around the internet ",
+    tools: ["React", "Node.js", "Javascript", "Appwrite", "TinyMCE"],
+    githubLink: "https://tippani-vert.vercel.app/",
+    image: projectImage4
+  },
+  {
+    title: "Symphony Hub",
+    description: "Symphony Hub is a web application designed to enhance your musical journey. It provides a platform to explore featured webinars, courses, and other music-related content",
+    tools: ["NextJS", "Typescript", "ShadCN", "Accertinity UI","TailwindCSS"],
+    githubLink: "https://symphony-hub.vercel.app/",
+    image: projectImage5
+  },
+  {
+    title: "Bhool Bhulaiyaa",
+    description: "An annonymous feedback website where users can share their secrets without revealing their identity.",
+    tools: ["Next JS", "TypeScript", "MongoDB", "Shadcn", "TailwindCSS","Gemini AI"],
+    githubLink: "https://bhool-bhulaiyaa.vercel.app/",
+    image: projectImage6
+  },
 ];
 
 function Projects({ darkMode }) {

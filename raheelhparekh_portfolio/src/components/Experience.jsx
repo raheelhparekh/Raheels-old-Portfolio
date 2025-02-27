@@ -63,10 +63,10 @@ function Experience({ darkMode }) {
             whileTap={{ scale: 0.9 }}
           >
             <h2 className="text-2xl mb-2">
-              <Typing text={['Web Developer']} speed={50} eraseDelay={2000} />
+              <Typing text={['Junior Web Developer']} speed={50} eraseDelay={2000} />
             </h2>
-            <p className="text-lg">SPESSA | 2023</p>
-            <p className="text-lg mt-2">Built an expense tracker website for financial management with budget planning feature.</p>
+            <p className="text-lg">MESHCRAFT | Sept 2024-Dec 2024</p>
+            <p className="text-lg mt-2"></p>
           </motion.div>
           {/* Second Experience */}
           <motion.div
@@ -74,10 +74,10 @@ function Experience({ darkMode }) {
             whileTap={{ scale: 0.9 }}
           >
             <h2 className="text-2xl mb-2">
-              <Typing text={['Full Stack Web Developer']} speed={50} eraseDelay={2000} />
+              <Typing text={['Backend Developer']} speed={50} eraseDelay={2000} />
             </h2>
-            <p className="text-lg">Luxury Lane | 2024</p>
-            <p className="text-lg mt-2">Built an E-commerce website displaying various luxury products for selection.</p>
+            <p className="text-lg">DeepCytes Cyber Labs UK | Jan 2025-June 2025</p>
+            <p className="text-lg mt-2"></p>
           </motion.div>
           {/* Add more experiences as needed */}
         </div>
